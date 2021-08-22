@@ -1,15 +1,26 @@
-spring.datasource.url: jdbc:mysql://127.0.0.1:33061/brokenphone?useSSL=false&useUnicode=true&characterEncoding=utf-8
-spring.datasource.driver-class-name: com.mysql.jdbc.Driver
-spring.datasource.username: root
+#spring.datasource.url: jdbc:mysql://hserver:3306/brokenphone?useSSL=false&useUnicode=true&characterEncoding=utf-8
+#spring.datasource.driver-class-name: com.mysql.jdbc.Driver
+#spring.datasource.username: root
+#spring.datasource.password: 123
+
+spring.datasource.driver-class-name: org.h2.Driver
 spring.datasource.password: 123
+spring.datasource.url: jdbc:h2:mem:bphone
+spring.datasource.username: root
+spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
 
 spring.jpa.show-sql: true
 spring.jpa.properties.hibernate.format_sql: true
 spring.jpa.properties.hibernate.show_sql_comments: true
 
-#spring.jpa.hibernate.ddl-auto: create-drop
-spring.jpa.hibernate.ddl-auto: update
-spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto: create-drop
+#spring.jpa.hibernate.ddl-auto: update
+#spring.jpa.hibernate.ddl-auto: validate
+#spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+spring.flyway.enabled: false
+spring.flyway.locations: classpath:db/migration
+spring.flyway.baseline-on-migrate: true
 
 spring.servlet.multipart.max-file-size: 2MB
 spring.servlet.multipart.max-request-size: 2MB
@@ -18,6 +29,17 @@ spring.servlet.multipart.max-request-size: 2MB
 
 server.servlet.context-path: /brokenphone
 spring.mustache.suffix: .mu
+
+jasypt.encryptor.password: ${ENCRYPT_KEY:}
+
+spring.security.oauth2:
+  client.registration:
+    google:
+      client-id: your-app-client-id
+      client-secret: your-app-client-secret
+    github:
+      client-id: ENC(oQ+aa/Y/VZc2uK2QGlBRMkE9m+ZYk2YJepDv8JprwrfOHf2awNcKdR+aaIl9mONEb+n3d41e0IRkVUxgaWuICg==)
+      client-secret: ENC(cAaE2uCFgtVQVAJRCBukL6n0OrfKYgXczrWaFq+mDGzTUOlVCZMaCQxL/fxI+9yXQQvkZp8DumEuVBClFTIYplkt5awoX913n4ru3wzCZm4=)
 
 menu:
   items:

@@ -23,7 +23,7 @@ public class TomcatConfig {
 			if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
 				// -1 means unlimited, accept bytes
 //				((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
-				((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(100 * 1024*1024);
+				((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(5 * 1024*1024);
 			}
 
 		});
